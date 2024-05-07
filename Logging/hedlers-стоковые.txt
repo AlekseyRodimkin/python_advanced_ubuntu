@@ -1,0 +1,6 @@
+SteamHandler   - запись в поток (stderr, stdin)
+FileHandler    - запись в файл
+SocketHandler  - запись в сокет по TCP
+DatagramHandler- запись в сокет по UDP
+SysLogHandler  - запись в syslog
+HTTPHandler    - запись по HTTP
