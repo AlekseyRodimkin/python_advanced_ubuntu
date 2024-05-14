@@ -2,12 +2,13 @@ import logging
 
 
 # info+
-http://grep.cs.msu.ru/python3.8_RU/digitology.tech/docs/python_3/howto/logging-cookbook.html
+# http://grep.cs.msu.ru/python3.8_RU/digitology.tech/docs/python_3/howto/logging-cookbook.html
 
 root_logger = logging.getLogger()  # получаем корневой логгер
 logging.basicConfig()  # настраиваем логгер
 # все логгеры будут принимать его настройки
 
+# пользовательский логгер
 module_logger = logging.getLogger('loger_name_1')  # получаем логгер модуля (первый или можно рут если один нужен)
 module_logger.propagate = False  # отключаем логгер модуля от логгера корневого
 
@@ -15,6 +16,7 @@ submodule_logger = logging.getLogger('loger_name_1.submodule_logger')  # пол�
 submodule_logger.setLevel('DEBUG')  # устанавливаем уровень логгирования логерра
 
 custom_handler = logging.StreamHandler()  # получаем обработчик (выводит все в консоль)
+# handler = logging.StreamHandler(sys.stdout)
 module_logger.addHandler(custom_handler)  # добавляем обработчик в логгер модуля
 
 formatter_1 = logging.Formatter(fmt="%(levelname)s | %(name)s | %(message)s")  # настраиваем формат логов
@@ -38,33 +40,23 @@ file_handler.setFormatter(formatter_2)
 module_logger.addHandler(file_handler)
 
 
+# ротация лог-файлов
+    # name - имя лог-файла
+    # maxBytes - максимальный размер лог-файла
+    # backupCount - максимальное количество лог-файлов
+file_handler = logging.handlers.RotatingFileHandler('applog.log', maxBytes=100000, backupCount=10)
+
+
+
 def main():
-    print("Root logger:")
-    print(root_logger.handlers)
-
-    print("Submodule logger:")
-    print(submodule_logger.handlers)
-
-    print("Module logger:")
-    print(module_logger.handlers)
+    try:
+        1 / 0
+    except ZeroDivisionError as error:\
+        module_logger.error('ZeroDivisionError', exc_info=True)  # подробнее об ошибке
+        # or   module_logger.exception("exception")
 
     submodule_logger.debug("Hi there!")
 
 
 if __name__ == '__main__':
     main()
-
-# кстати
-
-
-# import logging
-# import sys
-#
-# root = logging.getLogger()
-# root.setLevel(logging.DEBUG)
-#
-# handler = logging.StreamHandler(sys.stdout)
-# handler.setLevel(logging.DEBUG)
-# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# handler.setFormatter(formatter)
-# root.addHandler(handler)
