@@ -4,16 +4,12 @@ from logging_utilities.log_record import LogRecordIgnoreMissing  # для игн
 from logging_utilities.log_record import set_log_record_ignore_missing_factory  # default отсутствующих полей
 from custom_file_handler import dict_config  # import our config
 
-logging.config.dictConfig(dict_config)
 logging.setLogRecordFactory(LogRecordIgnoreMissing)  # для игнорирования отсутствующих полей
 set_log_record_ignore_missing_factory('default')  # default отсутствующих полей
 
 logging.config.dictConfig(dict_config)  # применение настроек из конфига
 
 # создание нужного нам модуля
-submodule_logger = logging.getLogger("module_logger.submodule_logger")
-submodule_logger.setLevel("DEBUG")
-
 submodule_logger = logging.getLogger("module_logger.submodule_logger")
 submodule_logger.setLevel("DEBUG")
 

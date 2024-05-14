@@ -2,7 +2,7 @@ import sys
 
 from werkzeug.exceptions import InternalServerError
 
-sys.path.append('..')
+sys.path.append('../materials')
 
 import logging.config
 

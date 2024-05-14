@@ -39,6 +39,7 @@ dict_config = {
         }
     },
     "loggers": {
+        # указывается в logger.getLogger('тута')
         "module_logger": {
             "level": "DEBUG",
             "handlers": ["file", "console"],
