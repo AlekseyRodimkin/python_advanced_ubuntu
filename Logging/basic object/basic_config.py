@@ -1,5 +1,9 @@
 import logging
 
+
+# info+
+http://grep.cs.msu.ru/python3.8_RU/digitology.tech/docs/python_3/howto/logging-cookbook.html
+
 root_logger = logging.getLogger()  # получаем корневой логгер
 logging.basicConfig()  # настраиваем логгер
 # все логгеры будут принимать его настройки
