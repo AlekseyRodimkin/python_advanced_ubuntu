@@ -20,6 +20,11 @@ dict_config = {
             "class": "logging.handlers.TimedRotatingFileHandler",  # работает также как и обычный логер в файл
             # Но позволет записывать логи с разными интервалами (удалять старые логи)
             "when": "midnight",         # режим работы с файлом (полночь)
+#             `'S': Second'
+#             'M': Minute'
+#             'H': Hour'
+#             'D': Day'
+#               'W0'-'W6': Weekday (0=Monday, 6=Sunday)
             "backupCount": 5,           # не более 5 файлов
             "formatter": "simple",      # форматер
             "level": "ERROR",           # уровень
